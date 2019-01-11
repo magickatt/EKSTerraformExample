@@ -1,10 +1,15 @@
 # EKS Terraform example
 
+## Prerequisites
+
+* [ Create an AWS account](https://aws.amazon.com/resources/create-account/)
+* [Install Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
+
 ## Build the EKS cluster
 
 ### AWS access credentials
 
-Firstly you'll need to supply your AWS access credentials for Terraform to use
+Firstly you'll need to supply your [AWS access credentials](https://console.aws.amazon.com/iam/home?#/security_credential) for Terraform to use
 
     export AWS_SECRET_ACCESS_KEY=""
     export AWS_ACCESS_KEY_ID=""
@@ -30,7 +35,7 @@ Then you'll need to use Terraform to create a test environment
 
 To get the kubectl configuration you'll need to output information from the module used in this example environment
 
-    terraform output -module=eks-terraform-example > ~/.kube/config
+    terraform output -module=eks-terraform-example | sed -e '1,2d' > ~/.kube/config
 
 To check that everything is working as expected, check the cluster information
 
