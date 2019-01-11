@@ -45,4 +45,11 @@ If everything is setup correctly you should see output similar to the following.
 
     Kubernetes master is running at https://abc.edf.us-east-1.eks.amazonaws.com
     CoreDNS is running at https://abc.edf.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    
+# Deploy application to EKS
 
+To ensure that the cluster is functional you will need to deploy the application plus a corresponding service and ingress routing to it
+
+    kubectl apply -f kubernetes/deployment.yml
+    kubectl apply -f kubernetes/service.yml
+    kubectl apply -f kubernetes/ingress.yml
