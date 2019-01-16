@@ -16,9 +16,9 @@ Firstly you'll need to supply your [AWS access credentials](https://console.aws.
 
 ### AWS IAM Authenticator
 
-In order to authenticate against the EKS cluster you'll need to install the AWS IAM Authenticator.
+In order to authenticate against the EKS cluster you'll need to [install the AWS IAM Authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
 
-Please note this step should be modified based on your workstation use-case (this is not ideal but should work in most cases) based on your binary $PATH layout and the latest stable version of the authenticator.
+Please note this step should be modified based on your workstation use-case (this is not ideal but should work in most cases) based on your binary $PATH layout and the latest stable version of the authenticator, but the snippet below will work for macOS
 
     curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/darwin/amd64/aws-iam-authenticator
     chmod +x ./aws-iam-authenticator
