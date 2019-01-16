@@ -49,3 +49,19 @@ resource "aws_route_table_association" "example" {
   subnet_id      = "${aws_subnet.example.*.id[count.index]}"
   route_table_id = "${aws_route_table.example.id}"
 }
+
+resource "aws_eip" "example" {
+  count = 2
+  vpc   = true
+}
+
+resource "aws_nat_gateway" "example" {
+  count = 2
+
+  allocation_id = "${aws_eip.example.*.id[count.index]}"
+  subnet_id     = "${aws_subnet.example.*.id[count.index]}"
+
+  tags = {
+    Name = "kubernetes.io/role/internal-elb"
+  }
+}

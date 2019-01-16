@@ -35,7 +35,11 @@ Then you'll need to use Terraform to create a test environment
 
 To get the kubectl configuration you'll need to output information from the module used in this example environment
 
-    terraform output -module=eks-terraform-example | sed -e '1,2d' > ~/.kube/config
+    terraform output -module=eks-terraform-example kubeconfig > ~/.kube/config
+    
+To allow the worker nodes to be able to join the cluster you will need to apply a ConfigMap that facilitates AWS IAM Role authentication
+
+    terraform output -module=eks-terraform-example config_map_aws_auth | kubectl apply -f -
 
 To check that everything is working as expected, check the cluster information
 
@@ -45,6 +49,10 @@ If everything is setup correctly you should see output similar to the following.
 
     Kubernetes master is running at https://abc.edf.us-east-1.eks.amazonaws.com
     CoreDNS is running at https://abc.edf.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    
+
+    
+
     
 # Deploy application to EKS
 
